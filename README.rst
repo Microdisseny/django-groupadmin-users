@@ -47,9 +47,7 @@ Example image from Stack Overflow answer:
 .. figure:: example.png?raw=true
    :alt: Example image
 
-   Example image
-
-.. |Build Status| image:: https://travis-ci.org/microdisseny/django-groupadmin-users.svg?branch=master
-   :target: https://travis-ci.org/microdisseny/django-groupadmin-users
-.. |Coverage Status| image:: https://coveralls.io/repos/github/microdisseny/django-groupadmin-users/badge.svg?branch=master
-   :target: https://coveralls.io/github/microdisseny/django-groupadmin-users?branch=master
+.. |Build Status| image:: https://travis-ci.org/Microdisseny/django-groupadmin-users.svg?branch=master
+   :target: https://travis-ci.org/Microdisseny/django-groupadmin-users
+.. |Coverage Status| image:: https://coveralls.io/repos/github/Microdisseny/django-groupadmin-users/badge.svg?branch=master
+   :target: https://coveralls.io/github/Microdisseny/django-groupadmin-users?branch=master
