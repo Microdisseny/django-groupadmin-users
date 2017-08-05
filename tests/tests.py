@@ -1,3 +1,4 @@
+from django import VERSION
 from django.contrib.admin.sites import AdminSite
 from django.contrib.auth.models import User, Group
 from django.test import TestCase
@@ -61,8 +62,13 @@ class ModelAdminTests(TestCase):
         self.assertTrue(group.user_set.first() == self.admin)
 
     def test_form_edit(self):
+        if VERSION <= (1, 9):
+            url = '/admin/auth/group/1/'
+        else:
+            url = '/admin/auth/group/1/change/'
+
         # GET the import form
-        response = self.client.get('/admin/auth/group/1/change/')
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
         data = {
@@ -70,8 +76,7 @@ class ModelAdminTests(TestCase):
             'permissions': ('1', '2'),
             'users': ('1',),
         }
-        response = self.client.post('/admin/auth/group/1/change/', data,
-                                    follow=True)
+        response = self.client.post(url, data, follow=True)
         self.assertEqual(response.status_code, 200)
 
         group = Group.objects.all().last()
