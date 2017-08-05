@@ -1,3 +1,6 @@
 *~
 *.pyc
 .coverage
+/build/
+/dist/
+/django_groupadmin_users.egg-info/
