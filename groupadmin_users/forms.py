@@ -5,6 +5,7 @@ from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.contrib.auth.models import Group
+from django.utils.translation import ugettext_lazy as _
 
 User = get_user_model()
 
@@ -20,7 +21,8 @@ class GroupAdminForm(forms.ModelForm):
          queryset=User.objects.all(),
          required=False,
          # Use the pretty 'filter_horizontal widget'.
-         widget=FilteredSelectMultiple('users', False)
+         widget=FilteredSelectMultiple('users', False),
+         label=_('Users'),
     )
 
     def __init__(self, *args, **kwargs):
