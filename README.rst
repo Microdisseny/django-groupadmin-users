@@ -11,6 +11,12 @@ answer <https://stackoverflow.com/a/39648244/593907>`__
 Usage
 -----
 
+Install with:
+
+::
+
+    pip install django-groupadmin-users
+
 Add ''groupadmin\_users'' to INSTALLED\_APPS after
 ''django.contrib.auth''. That's it.
 
