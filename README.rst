@@ -1,7 +1,7 @@
 Django GroupAdmin Users
 =======================
 
-|Build Status| |Coverage Status|
+|Build Status| |Coverage Status| |PyPI version|
 
 Edit users in group from the Group add and edit pages.
 
@@ -23,7 +23,7 @@ Add ''groupadmin\_users'' to INSTALLED\_APPS after
 Alternatively, don't add ''groupadmin\_users'' to INSTALLED\_APPS, but
 use and further customize this code:
 
-::
+.. code-block:: python
 
     from django.contrib import admin
     from django.contrib.auth.models import Group
@@ -54,6 +54,8 @@ Example image from Stack Overflow answer:
    :alt: Example image
 
 .. |Build Status| image:: https://travis-ci.org/Microdisseny/django-groupadmin-users.svg?branch=master
-   :target: https://travis-ci.org/Microdisseny/django-groupadmin-users
+    :target: https://travis-ci.org/Microdisseny/django-groupadmin-users
 .. |Coverage Status| image:: https://coveralls.io/repos/github/Microdisseny/django-groupadmin-users/badge.svg?branch=master
-   :target: https://coveralls.io/github/Microdisseny/django-groupadmin-users?branch=master
+    :target: https://coveralls.io/github/Microdisseny/django-groupadmin-users?branch=master
+.. |PyPI version| image:: https://badge.fury.io/py/django-groupadmin-users.svg
+    :target: https://badge.fury.io/py/django-groupadmin-users

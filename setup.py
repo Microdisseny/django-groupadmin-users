@@ -18,9 +18,13 @@ CLASSIFIERS = [
     'Topic :: Software Development :: Libraries :: Python Modules',
 ]
 
+with open('README.rst', 'r') as f:
+    long_desc = f.read()
+
 setup(
     name='django-groupadmin-users',
     description='Edit users in group from the Group add and edit pages',
+    long_description=long_desc,
     version=VERSION,
     author='Manel Clos',
     author_email='manelclos@gmail.com',
