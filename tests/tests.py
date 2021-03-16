@@ -1,7 +1,11 @@
+from contextlib import contextmanager
+
 from django import VERSION
 from django.contrib.admin.sites import AdminSite
 from django.contrib.auth.models import User, Group
+from django.db import DEFAULT_DB_ALIAS, connections
 from django.test import TestCase
+from django.test.utils import CaptureQueriesContext
 
 from groupadmin_users.admin import GroupAdmin
 
@@ -30,6 +34,19 @@ class ModelAdminTests(TestCase):
         self.admin = user
 
         self.client.login(username='admin', password='password')
+
+    @contextmanager
+    def withAssertNumQueriesLessThan(self, value, using=DEFAULT_DB_ALIAS):
+        with CaptureQueriesContext(connections[using]) as context:
+            yield  # your test will be run here
+        executed = len(context.captured_queries)
+        msg = "%d queries executed, %d expected\nCaptured queries were:\n%s" % (
+            executed, value,
+            '\n'.join(
+                '%d. %s' % (i, query['sql']) for i, query in enumerate(context.captured_queries, start=1)
+            )
+        )
+        self.assertLess(len(context.captured_queries), value, msg=msg)
 
     def test_default_fields(self):
         ga = GroupAdmin(Group, self.site)
@@ -83,3 +100,8 @@ class ModelAdminTests(TestCase):
         self.assertTrue(group.name == 'admins')
         self.assertTrue(group.permissions.all().count() == 2)
         self.assertTrue(group.user_set.first() == self.admin)
+
+    def test_group_permission_performance(self):
+        with self.withAssertNumQueriesLessThan(12):  # instead of 259!
+            response = self.client.get('/admin/auth/group/%s/' % self.group.pk, follow=True)
+            self.assertEqual(response.status_code, 200)
