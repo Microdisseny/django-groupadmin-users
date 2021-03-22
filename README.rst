@@ -8,14 +8,22 @@ Edit users in group from the Group add and edit pages.
 Credit goes to this `Stack Overflow
 answer <https://stackoverflow.com/a/39648244/593907>`__
 
-Usage
------
+Installation
+------------
+
+Works with Django version 1.8 to 3.1.
+
+Tested with Django-supported Python versions.
 
 Install with:
 
 ::
 
     pip install django-groupadmin-users
+
+
+Usage
+-----
 
 Add ''groupadmin\_users'' to INSTALLED\_APPS after
 ''django.contrib.auth''. That's it.
