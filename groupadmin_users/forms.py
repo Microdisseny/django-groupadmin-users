@@ -1,9 +1,8 @@
 # Code from https://stackoverflow.com/a/39648244/593907
 # modified according to https://docs.djangoproject.com/en/1.11/topics/forms/modelforms/#the-save-method  # noqa
-from django import forms, VERSION
-from django.contrib import admin
-from django.contrib.auth import get_user_model
+from django import VERSION, forms
 from django.contrib.admin.widgets import FilteredSelectMultiple
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.utils.translation import ugettext_lazy as _
 
@@ -18,11 +17,11 @@ class GroupAdminForm(forms.ModelForm):
 
     # Add the users field.
     users = forms.ModelMultipleChoiceField(
-         queryset=User.objects.all(),
-         required=False,
-         # Use the pretty 'filter_horizontal widget'.
-         widget=FilteredSelectMultiple('users', False),
-         label=_('Users'),
+        queryset=User.objects.all(),
+        required=False,
+        # Use the pretty 'filter_horizontal widget'.
+        widget=FilteredSelectMultiple('users', False),
+        label=_('Users'),
     )
 
     def __init__(self, *args, **kwargs):

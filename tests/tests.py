@@ -2,7 +2,7 @@ from contextlib import contextmanager
 
 from django import VERSION
 from django.contrib.admin.sites import AdminSite
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group, User
 from django.db import DEFAULT_DB_ALIAS, connections
 from django.test import TestCase
 from django.test.utils import CaptureQueriesContext

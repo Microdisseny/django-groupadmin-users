@@ -4,7 +4,6 @@ from django.contrib.auth.admin import GroupAdmin as GroupAdminDefault
 
 from groupadmin_users.forms import GroupAdminForm
 
-
 # Unregister the original Group admin.
 admin.site.unregister(Group)
 
@@ -15,6 +14,7 @@ class GroupAdmin(GroupAdminDefault):
     form = GroupAdminForm
     # Filter permissions horizontal as well.
     filter_horizontal = ['permissions']
+
 
 # Register the new Group ModelAdmin.
 admin.site.register(Group, GroupAdmin)
