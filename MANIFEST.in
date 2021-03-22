@@ -1,2 +1,3 @@
+include CHANGELOG.md
 include README.rst
 recursive-include groupadmin_users/locale *
