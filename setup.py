@@ -1,6 +1,6 @@
 from distutils.core import setup
-from setuptools import find_packages
 
+from setuptools import find_packages
 
 VERSION = '0.3.3'
 
