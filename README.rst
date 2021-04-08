@@ -11,7 +11,7 @@ answer <https://stackoverflow.com/a/39648244/593907>`__
 Installation
 ------------
 
-Works with Django version 1.8 to 3.1.
+Works with Django version 1.8 to 3.2.
 
 Tested with Django-supported Python versions.
 
@@ -66,4 +66,4 @@ Example image from Stack Overflow answer:
 .. |Coverage Status| image:: https://coveralls.io/repos/github/Microdisseny/django-groupadmin-users/badge.svg?branch=master
     :target: https://coveralls.io/github/Microdisseny/django-groupadmin-users?branch=master
 .. |PyPI version| image:: https://badge.fury.io/py/django-groupadmin-users.svg
-    :target: https://badge.fury.io/py/django-groupadmin-users
+    :target: https://pypi.org/project/django-groupadmin-users/
