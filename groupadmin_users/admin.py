@@ -15,18 +15,6 @@ class GroupAdmin(GroupAdminDefault):
     # Filter permissions horizontal as well.
     filter_horizontal = ['permissions']
 
-    class Media:
-        css = {
-            'all': ('admin/css/widgets.css',),
-        }
-        js = (
-            'admin/js/core.js',
-            'admin/js/vendor/jquery/jquery.js',
-            'admin/js/jquery.init.js',
-            'admin/js/SelectBox.js',
-            'admin/js/SelectFilter2.js',
-        )
-
 
 # Register the new Group ModelAdmin.
 admin.site.register(Group, GroupAdmin)

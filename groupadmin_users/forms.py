@@ -1,6 +1,6 @@
 # Code from https://stackoverflow.com/a/39648244/593907
 # modified according to https://docs.djangoproject.com/en/1.11/topics/forms/modelforms/#the-save-method  # noqa
-from django import VERSION, forms
+from django import forms
 from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
@@ -34,12 +34,7 @@ class GroupAdminForm(forms.ModelForm):
 
     def save_m2m(self):
         # Add the users to the Group.
-        # Deprecated in Django 1.10: Direct assignment to a reverse foreign key
-        #                            or many-to-many relation
-        if VERSION < (1, 9):
-            self.instance.user_set = self.cleaned_data['users']
-        else:
-            self.instance.user_set.set(self.cleaned_data['users'])
+        self.instance.user_set.set(self.cleaned_data['users'])
 
     def save(self, *args, **kwargs):
         # Default save
