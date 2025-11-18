@@ -11,7 +11,7 @@ answer <https://stackoverflow.com/a/39648244/593907>`__.
 Installation
 ------------
 
-Works with Django version 1.8 to 4.2.
+Works with Django version 1.8 to 5.2.
 
 Tested with Django-supported Python versions.
 
