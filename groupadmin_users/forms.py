@@ -20,7 +20,6 @@ class GroupAdminForm(forms.ModelForm):
         queryset=User.objects.all(),
         required=False,
         # Use the pretty 'filter_horizontal widget'.
-        widget=FilteredSelectMultiple('users', False),
         label=_('Users'),
     )
 
