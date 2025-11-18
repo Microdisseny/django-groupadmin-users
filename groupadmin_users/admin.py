@@ -13,7 +13,7 @@ class GroupAdmin(GroupAdminDefault):
     # Use our custom form.
     form = GroupAdminForm
     # Filter permissions horizontal as well.
-    filter_horizontal = ['permissions', 'users']
+    filter_horizontal = ['permissions']
 
 
 # Register the new Group ModelAdmin.

@@ -20,6 +20,7 @@ class GroupAdminForm(forms.ModelForm):
         queryset=User.objects.all(),
         required=False,
         # Use the pretty 'filter_horizontal widget'.
+        widget=FilteredSelectMultiple('users', False),
         label=_('Users'),
     )
 
@@ -41,3 +42,9 @@ class GroupAdminForm(forms.ModelForm):
         # Save many-to-many data
         self.save_m2m()
         return instance
+    
+    class Media:
+        css = {
+            'all':('/media/css/widgets.css',),
+        }
+        js = ('/admin/jsi18n/',)
