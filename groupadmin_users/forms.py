@@ -4,9 +4,30 @@ from django import VERSION, forms
 from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
+from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
 User = get_user_model()
+
+
+class AdminFilteredSelectMultiple(FilteredSelectMultiple):
+    """
+    FilteredSelectMultiple that renders with proper wrapper for admin layout.
+    This ensures the label positioning is correct across Django 1.8 through 5.x.
+    """
+
+    def render(self, name, value, attrs=None, renderer=None):
+        """Render the widget with proper wrapper for consistent layout across Django versions."""
+        # Django 1.11+ added the renderer parameter
+        if VERSION >= (1, 11):
+            output = super().render(name, value, attrs, renderer)
+        else:
+            output = super().render(name, value, attrs)
+
+        return format_html(
+            '<div class="related-widget-wrapper" data-model-ref="user">\n{}\n</div>',
+            output,
+        )
 
 
 # Create ModelForm based on the Group model.
@@ -20,8 +41,9 @@ class GroupAdminForm(forms.ModelForm):
         queryset=User.objects.all(),
         required=False,
         # Use the pretty 'filter_horizontal widget'.
-        widget=FilteredSelectMultiple('users', False),
+        widget=AdminFilteredSelectMultiple(_('users'), False),
         label=_('Users'),
+        help_text=_('Hold down "Control", or "Command" on a Mac, to select more than one.'),
     )
 
     def __init__(self, *args, **kwargs):
